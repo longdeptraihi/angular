@@ -1,0 +1,47 @@
+<table class="table table-bordered mt-5">
+  <thead>
+    <tr>
+      <th>STT</th>
+      <th>Ảnh</th>
+      <th>Tên sản phẩm</th>
+      <th>Giá sản phẩm</th>
+      <th>Tình trạng</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>1</td>
+      <td><img [src]="product.img" alt="{{product.name}}" width="50" /></td>
+      <td>{{product.name}}</td>
+      <td>{{product.price}}</td>
+      <td>{{ product.status ? 'Còn hàng' : 'Hết hàng' }}</td>
+      <td>
+        <button class="btn btn-danger btn-sm" (click)="onHandleRemove()">
+          Delete
+        </button>
+        <button class="btn btn-primary btn-sm" (click)="onDetail(product)">
+          Detail
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div *ngIf="detail">
+  Chi tiết sản phảm
+  <app-product-detail [product]="detail"></app-product-detail>
+</div>
+<!-- 
+<div>
+  {{product.name}}
+  <input type="text" (keypress)="onHandleChangeName($event)">
+  <input type="text" [(ngModel)]="product.name">
+</div> -->
+
+<!-- 
+- Interpolation : Hiển thị dữ liệu từ component -> view
+- Property Binding: 
+  + Hiển thị dữ liệu component -> view ( dành cho những thẻ a, img)
+  + Check trạng thái
+- Event Binding
+-->
